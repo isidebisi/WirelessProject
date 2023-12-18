@@ -14,5 +14,26 @@ function [rxbits conf] = rx(rxsignal,conf,k)
 %   conf        : configuration structure
 %
 
-% dummy 
-rxbits = zeros(conf.nbits,1);
+% downconversion
+
+% low pass filter using the function function [after] = ofdmlowpass(before,conf,f)
+
+
+% frame synchronization
+
+% FFT using OSFFT function provided function Y = osfft(X,OS_FACTOR)
+
+
+% remove cycle prefix
+
+% phase correction
+% optional
+
+
+% reconstruct (reshape)
+% retourner un truc qui s'appelle rx--- ?
+
+% demapper QPSK
+rxbits = demapper(rx---)
+
+end
