@@ -14,17 +14,24 @@ function [rxbits conf] = rx(rxsignal,conf,k)
 %   conf        : configuration structure
 %
 
-% downconversion
+%% demodulate
+demodulated_signal = demodulated(rxsignal, conf)
 
-% low pass filter using the function function [after] = ofdmlowpass(before,conf,f)
+%% low pass filter
 
+% TODO : adjust function argument f
+filtered_rx_signal = ofdmlowpass(demodulated_signal,conf,f)
 
-% frame synchronization
+%% frame synchronization
 
-% FFT using OSFFT function provided function Y = osfft(X,OS_FACTOR)
+% Index of the first data symbol
+data_idx = frame_sync(filtered_rx_signal, os_factor);
+
+%% FFT using OSFFT function provided function Y = osfft(X,OS_FACTOR)
 
 
 % remove cycle prefix
+
 
 % phase correction
 % optional
