@@ -15,32 +15,33 @@ function [rxbits conf] = rx(rxsignal,conf,k)
 %
 
 %% demodulate
-demodulated_signal = demodulated(rxsignal, conf)
+demodulated_signal = demodulated(rxsignal, conf);
 
 %% low pass filter
 
 % TODO : adjust function argument f
-filtered_rx_signal = ofdmlowpass(demodulated_signal,conf,f)
+filtered_rx_signal = ofdmlowpass(demodulated_signal,conf,f);
 
 %% frame synchronization
 
 % Index of the first data symbol
 data_idx = frame_sync(filtered_rx_signal, os_factor);
 
-%% FFT using OSFFT function provided function Y = osfft(X,OS_FACTOR)
+%% FFT using OSFFT function provided 
+% function Y = osfft(X,OS_FACTOR)
 
 
-% remove cycle prefix
+%% remove cycle prefix
 
 
-% phase correction
+%% phase correction
 % optional
 
 
 % reconstruct (reshape)
 % retourner un truc qui s'appelle rx--- ?
 
-% demapper QPSK
+%% demapper QPSK
 rxbits = demapper(rx---)
 
 end
