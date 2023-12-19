@@ -2,6 +2,10 @@ function [conf] = config()
 %CONFIG configuration structure
 %% TODO : change so it is not copy pasted
 
+% Imagesettings
+conf.imagePath = "Ludovic.png";
+conf.threshold = 0.35;
+
 % OFDM 
 conf.nbcarriers = 512;
 conf.carriersSpacing = 2; % Hz
