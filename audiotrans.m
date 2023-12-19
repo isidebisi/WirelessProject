@@ -1,36 +1,8 @@
 % % % % %
 % Wireless Receivers: algorithms and architectures
-% Audio Transmission Framework 
+% Audio Transmission Project
+% Charlotte Heibig and Ismael Frei
 %
-%
-%   3 operating modes:
-%   - 'matlab' : generic MATLAB audio routines (unreliable under Linux)
-%   - 'native' : OS native audio system
-%       - ALSA audio tools, most Linux distrubtions
-%       - builtin WAV tools on Windows 
-%   - 'bypass' : no audio transmission, takes txsignal as received signal
-
-% Configuration Values
-conf.audiosystem = 'matlab'; % Values: 'matlab','native','bypass'
-
-conf.f_s     = 48000;   % sampling rate  
-conf.f_sym   = 100;     % symbol rate
-conf.nframes = 1;       % number of frames to transmit
-conf.nbits   = 2000;    % number of bits 
-conf.modulation_order = 2; % BPSK:1, QPSK:2
-conf.f_c     = 4000;
-
-conf.npreamble  = 100;
-conf.bitsps     = 16;   % bits per audio sample
-conf.offset     = 0;
-
-% Init Section
-% all calculations that you only have to do once
-conf.os_factor  = conf.f_s/conf.f_sym;
-if mod(conf.os_factor,1) ~= 0
-   disp('WARNING: Sampling rate must be a multiple of the symbol rate'); 
-end
-conf.nsyms      = ceil(conf.nbits/conf.modulation_order);
 
 % Initialize result structure with zero
 res.biterrors   = zeros(conf.nframes,1);
@@ -45,8 +17,7 @@ res.rxnbits     = zeros(conf.nframes,1);
 
 for k=1:conf.nframes
     
-    % Generate random data
-    txbits = randi([0 1],conf.nbits,1);
+    
     
     % TODO: Implement tx() Transmit Function
     [txsignal conf] = tx(txbits,conf,k);

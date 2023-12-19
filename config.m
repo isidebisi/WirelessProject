@@ -28,5 +28,11 @@ conf.npreamble  = 256;
 conf.bitsps     = 16;   % bits per audio sample
 conf.offset     = 0;
 
+conf.os_factor  = conf.f_s/conf.f_sym;
+if mod(conf.os_factor,1) ~= 0
+   disp('WARNING: Sampling rate must be a multiple of the symbol rate'); 
+end
+
+conf.nsyms      = ceil(conf.nbits/conf.modulation_order);
 end
 
