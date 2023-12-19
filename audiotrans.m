@@ -3,6 +3,14 @@
 % Audio Transmission Project
 % Charlotte Heibig and Ismael Frei
 %
+clear, clc, close all
+
+
+
+config = config();
+
+imageBW = image2bin(config);
+
 
 % Initialize result structure with zero
 res.biterrors   = zeros(conf.nframes,1);
