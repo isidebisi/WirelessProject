@@ -23,7 +23,7 @@ conf.f_sym   = 100;     % symbol rate
 conf.rolloff = 0.22;
 conf.filterlength = 20;
 
-conf.data_per_frame = 2; % RANDOM NUMBER?
+conf.data_per_frame = 10;
 conf.training_len = 1;
 conf.train_seq = ones(conf.training_len);
 conf.nframes = 1;       % number of frames to transmit

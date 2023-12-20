@@ -12,9 +12,9 @@ center = ceil(N/2);
 
 assert(mod(N,1) == 0)
 
-Y = zeros(N,1);
+Y = zeros(N,size(X,2));
 
 YL = fft(X);
 
-Y(1:center)        = YL(end-center+1:end);
-Y(center+1:end)    = YL(1:(N-center));
+Y(1:center,:)        = YL(end-center+1:end,:);
+Y(center+1:end,:)    = YL(1:(N-center),:);
