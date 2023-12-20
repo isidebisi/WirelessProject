@@ -9,12 +9,13 @@ clear, clc, close all
 
 conf = config();
 
-imageBW = image2bin(conf);
-
-conf.preamble = 
+imageBW, conf = image2bin(conf);
 
 
-% Initialize result structure with zero
+
+
+
+%% Initialize result structure with zero
 res.biterrors   = zeros(conf.nframes,1);
 res.rxnbits     = zeros(conf.nframes,1);
 
@@ -46,7 +47,7 @@ for k=1:conf.nframes
     rawtxsignal = [  rawtxsignal  zeros(size(rawtxsignal)) ]; % add second channel: no signal
     txdur       = length(rawtxsignal)/conf.f_s; % calculate length of transmitted signal
     
-%     wavwrite(rawtxsignal,conf.f_s,16,'out.wav')   
+    % wavwrite(rawtxsignal,conf.f_s,16,'out.wav')   
     audiowrite('out.wav',rawtxsignal,conf.f_s)  
     
     % Platform native audio mode 

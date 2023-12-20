@@ -25,6 +25,8 @@ conf.modulation_order = 2; % BPSK:1, QPSK:2
 conf.f_c     = 6000;
 
 conf.npreamble  = 256;
+conf.preamble = preambleGenerate(conf.npreamble);
+
 conf.bitsps     = 16;   % bits per audio sample
 conf.offset     = 0;
 
