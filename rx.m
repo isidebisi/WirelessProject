@@ -44,6 +44,18 @@ freq_rx = osfft(rx_without_cp,conf.os_factor_ofdm);
 %% channel estimation & phase correction
 % TODO
 rx_corr = phase_estimation(freq_rx);
+
+% Define colors for plotting
+colors = ["#ff0000", "#ff1c00", "#ff3900", "#ff5500", "#ff7100", "#ff8e00", ...
+          "#ffaa00", "#ffc600", "#ffe300", "#ffff00"];
+colors = [colors, colors(end:-1:1)];
+
+% Create a figure for visualization
+figure()
+axis square
+hold on
+xline(0, "blue", "LineWidth", 2)
+yline(0, "blue", "LineWidth", 2)
 %% demapper QPSK
 % reconstruct frame without cp before demapping
 rx_reconstructed =  reshape(rx_corr.', 1, []);
