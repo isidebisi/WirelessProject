@@ -35,7 +35,7 @@ num_blocks = numel(data_rx) / conf.data_len;
 rx_array = reshape(data_rx, conf.data_len, num_blocks);
 
 % Remove cyclic prefix from each block
-rx_without_cp = rx_array(conf.cp_length + 1:end,:);
+rx_without_cp = rx_array(conf.cp_length*conf.os_factor_ofdm + 1:end,:);
 
 %% convert to frequency domain using OSFFT function provided 
 
@@ -43,7 +43,7 @@ freq_rx = osfft(rx_without_cp,conf.os_factor_ofdm);
 
 %% channel estimation & phase correction
 % TODO
-
+rx_corrected
 %% demapper QPSK
 % reconstruct frame without cp before demapping
 rx_reconstructed =  reshape(freq_rx.', 1, []);

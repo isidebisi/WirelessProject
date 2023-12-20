@@ -30,6 +30,8 @@ conf.f_c     = 6000;
 conf.npreamble  = 256;
 conf.preamble = preambleGenerate(conf.npreamble);
 
+conf.channel_estimation = 'viterbi'; % 'none'
+
 conf.bitsps     = 16;   % bits per audio sample
 conf.offset     = 0;
 
