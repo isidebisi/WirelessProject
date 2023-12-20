@@ -8,8 +8,8 @@ conf.threshold = 0.35;
 
 % OFDM 
 conf.nbcarriers = 512;
-conf.carriersSpacing = 2; % Hz
-conf.cp_length = 128;
+conf.carriersSpacing = 5; % Hz
+conf.cp_length = 64;
 conf.bandwidth = ceil((conf.nbcarriers + 1)/ 2)*conf.carriersSpacing;
 conf.nbdatapertraining = 64;
 conf.enlarge_bandwidth = 1.1*conf.bandwidth;
@@ -20,6 +20,8 @@ conf.f_sym   = 100;     % symbol rate
 conf.rolloff = 0.22;
 conf.filterlength = 20;
 
+conf.data_per_frame = 10; % RANDOM NUMBER?
+conf.training_len = 1; 
 conf.nframes = 1;       % number of frames to transmit
 conf.nbits   = conf.nbdatapertraining*conf.nbcarriers*2      * 5;    % number of bits
 conf.modulation_order = 2; % BPSK:1, QPSK:2
@@ -33,6 +35,10 @@ conf.offset     = 0;
 
 conf.os_factor_ofdm  = conf.f_s/(conf.carriersSpacing*conf.nbcarriers); % help osifft
 conf.os_factor_preamble = 4;
+
+conf.data_len = conf.training_len + conf.data_per_frame;
+% vérifier si paramètres sont corrects
+conf.frame_wihtout_preamble_len = conf.data_len *conf.os_factor_ofdm (conf.nbcarriers+ conf.cp_length); % bits
 
 if mod(conf.os_factor_preamble,1) ~= 0
    disp('WARNING: Sampling rate must be a multiple of the symbol rate'); 
