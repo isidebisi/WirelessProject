@@ -23,7 +23,7 @@ tx_carriers = reshape(tx_mapped, conf.nbcarriers,[]);
 tx_ofdm = osifft(tx_carriers, conf.os_factor_ofdm);
 
 %create and add cyclic prefix
-tx_ofdm_cp = [tx_ofdm(end-conf.cp_length+1:end); tx_ofdm];
+tx_ofdm_cp = [tx_ofdm(end-conf.cp_length+1:end,:); tx_ofdm];
 tx_ofdm_cp = tx_ofdm_cp(:);
 
 %normalize
