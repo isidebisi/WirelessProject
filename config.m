@@ -30,7 +30,9 @@ conf.preamble = preambleGenerate(conf.npreamble);
 conf.bitsps     = 16;   % bits per audio sample
 conf.offset     = 0;
 
-conf.os_factor  = conf.f_s/conf.f_sym;
+conf.os_factor_ofdm  = conf.f_s/(conf.carriersSpacing*conf.nbcarriers); % help osifft
+conf.os_factor_preamble = 4;
+
 if mod(conf.os_factor,1) ~= 0
    disp('WARNING: Sampling rate must be a multiple of the symbol rate'); 
 end
