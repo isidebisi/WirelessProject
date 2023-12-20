@@ -27,15 +27,18 @@ filtered_rx_signal = ofdmlowpass(demodulated_signal,conf,f);
 % Index of the first data symbol
 data_idx = frame_sync(filtered_rx_signal, os_factor);
 
-%% FFT using OSFFT function provided 
-% function Y = osfft(X,OS_FACTOR)
-
-
+% get entire datastream
+data_rx = filtered_rx_signal(data_idx:data_idx+msg_length(dans conf)-1)
 %% remove cycle prefix
+data_without_cp = data_rx(conf.cp_length + 1:end);
+% nicolas reshape ici 
 
+%% convert to frequency domain using OSFFT function provided 
 
-%% phase correction
-% optional
+freq_rx = osfft(data_without_cp,conf.os_factor) % os factor different for ofdm
+
+%% channel estimation & phase correction
+% 
 
 
 % reconstruct (reshape)
