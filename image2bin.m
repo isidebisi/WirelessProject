@@ -6,8 +6,8 @@ function [txbits conf] = image2bin(conf)
         image = imread(conf.imagePath);
         imageGray = rgb2gray(image);
         imageBW = imbinarize(imageGray, conf.threshold);
-        txbits_char = reshape(imageBW', 1, []);
-        txbits = str2double(txbits_char);
+        %txbits_char = reshape(imageBW', 1, []);
+        txbits = double(imageBW(:)');
         figure
         montage({image, imageGray, imageBW}, 'Size', [1 3]);
         title("Image, from original to converted bin BW");
@@ -16,8 +16,7 @@ function [txbits conf] = image2bin(conf)
     if strcmp(conf.imageConversion,'complex')
         image = imread(conf.imagePath);
         imageGray = rgb2gray(image);
-        txbits_char = reshape(imageGray', 1, []);
-        txbits = str2double(txbits_char);
+        txbits = double(imageGray(:)');
         figure
         montage({image, imageGray}, 'Size', [1 2]);
         title("Image, from original to converted bin BW");
