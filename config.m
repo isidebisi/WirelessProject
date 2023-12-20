@@ -2,8 +2,8 @@ function [conf] = config()
 %CONFIG configuration structure
 
 % Imagesettings
-conf.imageConversion = "easy"; % "easy" or "complex" for purely BW or grayscale
-conf.imagePath = "Ludovic.png";
+conf.imageConversion = "complex"; % "easy" or "complex" for purely BW or grayscale
+conf.imagePath = "smallSmile.png";
 conf.threshold = 0.35;
 
 % OFDM 
@@ -20,8 +20,9 @@ conf.f_sym   = 100;     % symbol rate
 conf.rolloff = 0.22;
 conf.filterlength = 20;
 
-conf.data_per_frame = 10; % RANDOM NUMBER?
-conf.training_len = 1; 
+conf.data_per_frame = 2; % RANDOM NUMBER?
+conf.training_len = 1;
+conf.train_seq = zeros(conf.training_len);
 conf.nframes = 1;       % number of frames to transmit
 conf.nbits   = conf.nbdatapertraining*conf.nbcarriers*2      * 5;    % number of bits
 conf.modulation_order = 2; % BPSK:1, QPSK:2
@@ -40,7 +41,7 @@ conf.os_factor_preamble = 4;
 
 conf.data_len = conf.training_len + conf.data_per_frame;
 % vérifier si paramètres sont corrects
-conf.frame_wihtout_preamble_len = conf.data_len *conf.os_factor_ofdm (conf.nbcarriers+ conf.cp_length); % bits
+conf.frame_without_preamble_len = conf.data_len *conf.os_factor_ofdm *(conf.nbcarriers+ conf.cp_length); % bits
 
 if mod(conf.os_factor_preamble,1) ~= 0
    disp('WARNING: Sampling rate must be a multiple of the symbol rate'); 
