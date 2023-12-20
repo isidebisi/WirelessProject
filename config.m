@@ -6,6 +6,9 @@ conf.imageConversion = "complex"; % "easy" or "complex" for purely BW or graysca
 conf.imagePath = "smallSmile.png";
 conf.threshold = 0.35;
 
+conf.audiosystem = "bypass" % "matlab" or "bypass"
+
+
 % OFDM 
 conf.nbcarriers = 512;
 conf.carriersSpacing = 5; % Hz
@@ -22,7 +25,7 @@ conf.filterlength = 20;
 
 conf.data_per_frame = 2; % RANDOM NUMBER?
 conf.training_len = 1;
-conf.train_seq = zeros(conf.training_len);
+conf.train_seq = ones(conf.training_len);
 conf.nframes = 1;       % number of frames to transmit
 conf.nbits   = conf.nbdatapertraining*conf.nbcarriers*2      * 5;    % number of bits
 conf.modulation_order = 2; % BPSK:1, QPSK:2
