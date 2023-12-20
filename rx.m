@@ -27,7 +27,7 @@ data_idx = frame_sync(filtered_rx_signal, conf.os_factor_preamble);
 
 % get datastream without preamble
 data_rx = filtered_rx_signal(data_idx:data_idx+conf.frame_without_preamble_len-1);
-size(data_rx)
+
 %% remove cycle prefix
 % Number of blocks based on data length and block size
 num_blocks = numel(data_rx) / conf.data_len;
@@ -49,6 +49,7 @@ rx_corr = phase_estimation(freq_rx, conf);
 %% demapper QPSK
 % reconstruct frame without cp before demapping
 rx_reconstructed =  reshape(rx_corr,[], 1);
+%rx_reconstructed = rxdata / sqrt(mean(abs(rxdata).^2));
 
 % demap bits
 rxbits = demapper(rx_reconstructed);
