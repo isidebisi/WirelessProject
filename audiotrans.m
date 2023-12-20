@@ -11,7 +11,7 @@ conf = config();
 
 [txbits conf] = image2bin(conf);
 
-tx_bits = randi([0 1], conf.nbcarriers * conf.data_per_frame *  conf.modulation_order, 1);
+txbits = randi([0 1], conf.nbcarriers * conf.data_per_frame *  conf.modulation_order, 1);
 
 
 
