@@ -15,7 +15,7 @@ function [rxbits conf] = rx(rxsignal,conf,k)
 %
 
 %% demodulate
-demodulated_signal = demodulated(rxsignal, conf);
+demodulated_signal = demodulate(rxsignal, conf);
 
 %% low pass filter
 filtered_rx_signal = ofdmlowpass(demodulated_signal,conf,conf.enlarge_bandwidth);
