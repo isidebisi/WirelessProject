@@ -51,8 +51,8 @@ preamble_shaped = preamble_shaped / max(abs(preamble_shaped));
 txsignal = [preamble_shaped; txsignal];
 
 % total time of frame to be sent
-time = 0:1/conf.f_s:(size(txsignal)-1)/conf.f_s;
+t = 0:1/conf.f_s: (length(txsignal) - 1)/conf.f_s;
 
 %up convert
-txsignal = cos(2*pi*conf.f_c*time').* real(txsignal)- sin(2*pi*conf.f_c*time') .* imag(txsignal);
+txsignal = real(txsignal .* exp(1j*2*pi*conf.f_c*t'));
 
