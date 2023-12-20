@@ -12,12 +12,12 @@ function [txbits conf] = image2bin(conf)
     title("Image, from original to converted bin BW");
     
     %add random bits
-    bit_per_tram = conf.nbdatapertrainning * conf.nbcarriers * 2;
+    bit_per_tram = conf.nbdatapertraining * conf.nbcarriers * 2;
     conf.nbits = bit_per_tram * (floor(length(txbits) / bit_per_tram) + 1);
     nb_rdm_bit = double(num2str(dec2bin(conf.nbits - length(txbits) - 32, 32)) - '0');
-    txbits = [nb_rdm_bit, txbits];
-    txbits(:);
-    txbits = [txbits; randi([0, 1], conf.nbits - length(txbits), 1)];
+
+    txbits = [nb_rdm_bit, txbits(:)']; % Ensure txbits is a row vector
+    txbits = [txbits(:); randi([0, 1], conf.nbits - length(txbits), 1)]; % Ensure txbits is a column vector
     txsignal = txbits;
     
 end

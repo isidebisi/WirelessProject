@@ -10,7 +10,7 @@ conf.nbcarriers = 512;
 conf.carriersSpacing = 2; % Hz
 conf.cp_length = 128;
 conf.bandwidth = ceil((conf.nbcarriers + 1)/ 2)*conf.carriersSpacing;
-conf.nbdatapertrainning = 64;
+conf.nbdatapertraining = 64;
 conf.enlarge_bandwidth = 1.1*conf.bandwidth;
 
 conf.f_s     = 48000;   % sampling rate  
@@ -20,7 +20,7 @@ conf.rolloff = 0.22;
 conf.filterlength = 20;
 
 conf.nframes = 1;       % number of frames to transmit
-conf.nbits   = conf.nbdatapertrainning*conf.nbcarriers*2      * 5;    % number of bits
+conf.nbits   = conf.nbdatapertraining*conf.nbcarriers*2      * 5;    % number of bits
 conf.modulation_order = 2; % BPSK:1, QPSK:2
 conf.f_c     = 6000;
 
