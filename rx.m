@@ -44,11 +44,11 @@ freq_rx = osfft(rx_without_cp,conf.os_factor_ofdm);
 
 %% channel estimation & phase correction
 % TODO
-% rx_corr = phase_estimation(freq_rx, conf);
+rx_corr = phase_estimation(freq_rx, conf);
 
 %% demapper QPSK
 % reconstruct frame without cp before demapping
-rx_reconstructed =  reshape(freq_rx.', 1, []);
+rx_reconstructed =  reshape(rx_corr,[], 1);
 
 % demap bits
 rxbits = demapper(rx_reconstructed);

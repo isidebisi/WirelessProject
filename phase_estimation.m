@@ -3,7 +3,7 @@ function [rx_corrected] = phase_estimation(rx_data, conf)
 % Channel estimation
 switch conf.channel_estimation
     case 'none'
-        rx_corrected = rx_data(2:end, :);
+        rx_corrected = rx_data(:,2:end);
 
     % case 'viterbi'
     %     %% Initialize plot
