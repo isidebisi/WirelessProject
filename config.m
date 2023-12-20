@@ -6,6 +6,9 @@ conf.imageConversion = "complex"; % "easy" or "complex" for purely BW or graysca
 conf.imagePath = "smallSmile.png";
 conf.threshold = 0.35;
 
+conf.audiosystem = "matlab"
+
+
 % OFDM 
 conf.nbcarriers = 512;
 conf.carriersSpacing = 5; % Hz

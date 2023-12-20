@@ -9,7 +9,7 @@ clear, clc, close all
 
 conf = config();
 
-imageBW, conf = image2bin(conf);
+[txbits conf] = image2bin(conf);
 
 
 

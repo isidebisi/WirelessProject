@@ -23,7 +23,7 @@ tx_carriers = reshape(tx_mapped, conf.nbcarriers,[]);
 tx_ofdm = osifft(tx_carriers, conf.os_factor_ofdm);
 
 %create and add cyclic prefix
-tx_ofdm_cp = [tx_ofdm(end-conf.cp_length+1:end,:), tx_ofdm];
+tx_ofdm_cp = [tx_ofdm(end-conf.cp_length+1:end); tx_ofdm];
 tx_ofdm_cp = tx_ofdm_cp(:);
 
 %normalize
@@ -32,7 +32,7 @@ tx_ofdm_cp_norm = tx_ofdm_cp/max(abs(tx_ofdm_cp));
 %generate training sequence
 tr_shaped = repmat(conf.train_seq, conf.nbcarriers, 1);
 tr_ofdm = osifft(tr_shaped, conf.os_factor_ofdm);
-tr_cp = [tr_ofdm(end-conf.cp_os+1:end, :), tr_ofdm];
+tr_cp = [tr_ofdm(end-conf.os_factor_ofdm*conf.cp_length+1:end, :); tr_ofdm];
 tr_cp = tr_cp(:);
 tr_norm = tr_cp / max(abs(tr_cp));
 
