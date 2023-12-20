@@ -26,20 +26,20 @@ filtered_rx_signal = ofdmlowpass(demodulated_signal,conf,conf.enlarge_bandwidth)
 data_idx = frame_sync(filtered_rx_signal, conf.os_factor_preamble); % maybe change frame_sync / fun arg
 
 % get datastream without preamble
-data_rx = filtered_rx_signal(data_idx:data_idx+msg_length); % add msg length
+data_rx = filtered_rx_signal(data_idx:data_idx+frame_without_preamble_len);
 %% remove cycle prefix
 % Number of blocks based on data length and block size
-num_blocks = numel(data_rx) / conf.data_length; % add data length
+num_blocks = numel(data_rx) / conf.data_len;
 
 % Reshape received data into a 2D matrix 
-rx_array = reshape(data_rx, conf.data_length, num_blocks).'; % add data length to config
+rx_array = reshape(data_rx, conf.data_len, num_blocks);
 
-% Remove cyclic prefix from each block assuming that the cp length is known
+% Remove cyclic prefix from each block
 rx_without_cp = rx_array(conf.cp_length + 1:end,:);
 
 %% convert to frequency domain using OSFFT function provided 
 
-freq_rx = osfft(rx_without_cp,conf.os_factor_ofdm) % os factor different for ofdm
+freq_rx = osfft(rx_without_cp,conf.os_factor_ofdm);
 
 %% channel estimation & phase correction
 % TODO

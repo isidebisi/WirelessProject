@@ -33,6 +33,9 @@ conf.offset     = 0;
 conf.os_factor_ofdm  = conf.f_s/(conf.carriersSpacing*conf.nbcarriers); % help osifft
 conf.os_factor_preamble = 4;
 
+conf.data_len = conf.;
+conf.frame_wihtout_preamble_len = ;
+
 if mod(conf.os_factor,1) ~= 0
    disp('WARNING: Sampling rate must be a multiple of the symbol rate'); 
 end
