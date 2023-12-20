@@ -106,11 +106,11 @@ for k=1:conf.nframes
     
     % TODO: Implement rx() Receive Function
     [rxbits conf]       = rx(rxsignal,conf);
-    
-    res.rxnbits(k)      = length(rxbits);  
-    res.biterrors(k)    = sum(rxbits ~= txbits);
+
+    % res.rxnbits(k)      = length(rxbits);  
+    % res.biterrors(k)    = sum(rxbits ~= txbits);
     
 end
 
-per = sum(res.biterrors > 0)/conf.nframes
-ber = sum(res.biterrors)/sum(res.rxnbits)
+% per = sum(res.biterrors > 0)/conf.nframes
+% ber = sum(res.biterrors)/sum(res.rxnbits)
