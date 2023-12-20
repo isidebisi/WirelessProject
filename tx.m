@@ -14,4 +14,4 @@ function [txsignal conf] = tx(txbits,conf,k)
 %
 
 
-tx_mapped = 
+tx_mapped = mapGray(txbits);

@@ -11,6 +11,8 @@ conf = config();
 
 imageBW = image2bin(conf);
 
+conf.preamble = 
+
 
 % Initialize result structure with zero
 res.biterrors   = zeros(conf.nframes,1);
