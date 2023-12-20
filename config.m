@@ -1,6 +1,5 @@
 function [conf] = config()
 %CONFIG configuration structure
-%% TODO : change so it is not copy pasted
 
 % Imagesettings
 conf.imagePath = "Ludovic.png";
@@ -12,6 +11,7 @@ conf.carriersSpacing = 2; % Hz
 conf.cp_length = 128;
 conf.bandwidth = ceil((conf.nbcarriers + 1)/ 2)*conf.carriersSpacing;
 conf.nbdatapertrainning = 64;
+conf.enlarge_bandwidth = 1.1*conf.bandwidth;
 
 conf.f_s     = 48000;   % sampling rate  
 conf.f_sym   = 100;     % symbol rate
