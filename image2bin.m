@@ -23,12 +23,9 @@ function [txbits conf] = image2bin(conf)
     end
 
     %add random bits
-    bit_per_tram = conf.nbdatapertraining * conf.nbcarriers * 2;
-    conf.nbits = bit_per_tram * (floor(length(txbits) / bit_per_tram) + 1);
-    nb_rdm_bit = double(num2str(dec2bin(conf.nbits - length(txbits) - 32, 32)) - '0');
-
-    txbits = [nb_rdm_bit, txbits(:)']; % Ensure txbits is a row vector
-    txbits = [txbits(:); randi([0, 1], conf.nbits - length(txbits), 1)]; % Ensure txbits is a column vector
-    txsignal = txbits;
+    if (mod(txbits,conf.nbcarriers) ~= 0)
+        nb_rdm_bit = mod(txbits,conf.nbcarriers);
+        txbits = [txbits randi([0 1], nb_rdm_bit, 1)]
+    end
     
 end
