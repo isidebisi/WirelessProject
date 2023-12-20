@@ -33,7 +33,7 @@ size(data_rx)
 num_blocks = numel(data_rx) / conf.data_len;
 
 % Reshape received data into a 2D matrix 
-rx_array = reshape(data_rx, conf.data_len, num_blocks);
+rx_array = reshape(data_rx, num_blocks, conf.data_len);
 
 % Remove cyclic prefix from each block
 rx_without_cp = rx_array(conf.cp_length*conf.os_factor_ofdm + 1:end,:);
