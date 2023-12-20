@@ -2,6 +2,7 @@ function [conf] = config()
 %CONFIG configuration structure
 
 % Imagesettings
+conf.imageConversion = "easy"; % "easy" or "complex" for purely BW or grayscale
 conf.imagePath = "Ludovic.png";
 conf.threshold = 0.35;
 
@@ -33,7 +34,7 @@ conf.offset     = 0;
 conf.os_factor_ofdm  = conf.f_s/(conf.carriersSpacing*conf.nbcarriers); % help osifft
 conf.os_factor_preamble = 4;
 
-if mod(conf.os_factor,1) ~= 0
+if mod(conf.os_factor_preamble,1) ~= 0
    disp('WARNING: Sampling rate must be a multiple of the symbol rate'); 
 end
 
