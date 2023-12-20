@@ -11,8 +11,8 @@ conf.audiosystem = "bypass" % "matlab" or "bypass"
 
 % OFDM 
 conf.nbcarriers = 256;
-conf.carriersSpacing = 5; % Hz
-conf.cp_length = 64;
+conf.carriersSpacing = 2; % Hz
+conf.cp_length = 0;
 conf.bandwidth = ceil((conf.nbcarriers + 1)/ 2)*conf.carriersSpacing;
 conf.nbdatapertraining = 64;
 conf.enlarge_bandwidth = 1.1*conf.bandwidth;
