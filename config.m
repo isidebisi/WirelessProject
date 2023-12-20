@@ -3,14 +3,14 @@ function [conf] = config()
 
 % Imagesettings
 conf.imageConversion = "complex"; % "easy" or "complex" for purely BW or grayscale
-conf.imagePath = "smallSmile.png";
+conf.imagePath = "64x80.png";
 conf.threshold = 0.35;
 
 conf.audiosystem = "bypass" % "matlab" or "bypass"
 
 
 % OFDM 
-conf.nbcarriers = 512;
+conf.nbcarriers = 256;
 conf.carriersSpacing = 5; % Hz
 conf.cp_length = 64;
 conf.bandwidth = ceil((conf.nbcarriers + 1)/ 2)*conf.carriersSpacing;

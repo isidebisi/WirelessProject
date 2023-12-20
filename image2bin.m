@@ -8,18 +8,18 @@ function [txbits conf] = image2bin(conf)
         imageBW = imbinarize(imageGray, conf.threshold);
         %txbits_char = reshape(imageBW', 1, []);
         txbits = double(imageBW(:)');
-        figure
-        montage({image, imageGray, imageBW}, 'Size', [1 3]);
-        title("Image, from original to converted bin BW");
+        % figure
+        % montage({image, imageGray, imageBW}, 'Size', [1 3]);
+        % title("Image, from original to converted bin BW");
     end
     
     if strcmp(conf.imageConversion,'complex')
         image = imread(conf.imagePath);
         imageGray = rgb2gray(image);
         txbits = double(imageGray(:)');
-        figure
-        montage({image, imageGray}, 'Size', [1 2]);
-        title("Image, from original to converted bin BW");
+        % figure
+        % montage({image, imageGray}, 'Size', [1 2]);
+        % title("Image, from original to converted bin BW");
     end
 
     %add random bits
