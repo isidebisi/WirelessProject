@@ -7,9 +7,9 @@ clear, clc, close all
 
 
 
-config = config();
+conf = config();
 
-imageBW = image2bin(config);
+imageBW = image2bin(conf);
 
 
 % Initialize result structure with zero

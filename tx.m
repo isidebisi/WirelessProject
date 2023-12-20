@@ -14,6 +14,4 @@ function [txsignal conf] = tx(txbits,conf,k)
 %
 
 
-% dummy 400Hz sinus generation
-time = 1:1/conf.f_s:4;
-txsignal = 0.3*sin(2*pi*400 * time.');
+tx_mapped = 
